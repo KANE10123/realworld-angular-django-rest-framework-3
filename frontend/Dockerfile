@@ -1,5 +1,5 @@
 # Build stage
-FROM node:18 as build
+FROM node:18 AS build
 
 WORKDIR /app
 
@@ -17,7 +17,7 @@ RUN npm run build -- --configuration=production
 FROM nginx:alpine
 
 # Make sure the dist path matches what's generated
-COPY --from=build /app/dist/frontend/browser /usr/share/nginx/html
+COPY --from=build /app/dist/frontend /usr/share/nginx/html
 
 EXPOSE 80
 
