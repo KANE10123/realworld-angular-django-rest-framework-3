@@ -28,6 +28,7 @@
             "deployUrl": "/static/",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHerf": "/",
             "polyfills": [
               "zone.js"
             ],
@@ -40,8 +41,8 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "baseHerf": "/"
+            "scripts": []
+            
           },
           "configurations": {
             "production": {
