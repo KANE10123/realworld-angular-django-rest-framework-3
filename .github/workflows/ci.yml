@@ -67,5 +67,4 @@ jobs:
 
       - name: Deploy using Docker Compose
         run: |
-          docker-compose down
           docker-compose up -d --pull always
