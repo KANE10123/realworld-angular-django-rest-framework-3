@@ -28,7 +28,7 @@
             "deployUrl": "/static/",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "baseHerf": "/",
+            "baseHref": "/",
             "polyfills": [
               "zone.js"
             ],
