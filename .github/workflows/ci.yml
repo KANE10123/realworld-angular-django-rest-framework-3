@@ -54,17 +54,19 @@ jobs:
             apt-transport-https \
             ca-certificates \
             curl \
-            software-properties-common
+            gnupg \
+            lsb-release
+
           curl -fsSL https://download.docker.com/linux/ubuntu/gpg  | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
           echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
           sudo apt-get update
-          sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+          sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
-      - name: Pull latest images
+      - name: Install Docker Compose Plugin
         run: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/realworld-angular-django-frontend:latest
-          docker pull ${{ secrets.DOCKER_USERNAME }}/realworld-angular-django-backend:latest
+          sudo apt-get install -y docker-compose-plugin
 
       - name: Deploy using Docker Compose
         run: |
-          docker-compose up -d --pull always
+          docker compose down
+          docker compose up -d --pull always
